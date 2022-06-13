@@ -1,0 +1,1 @@
+EXEC sp_delete_deleteProduct @Id

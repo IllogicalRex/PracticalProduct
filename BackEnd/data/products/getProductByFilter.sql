@@ -1,0 +1,1 @@
+EXEC sp_get_ProductsByFilter @CodeBar;

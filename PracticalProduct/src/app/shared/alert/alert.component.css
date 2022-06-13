@@ -1,0 +1,23 @@
+::ng-deep snack-bar-container.success {
+    background: #48D2A0;
+    color: white;
+    margin: 0px;
+    width: 150vh;
+    max-width: none;
+}
+
+::ng-deep snack-bar-container.warning {
+    background: #F8C51C;
+    color: white;
+    margin: 0px;
+    width: 150vh;
+    max-width: none;
+}
+
+::ng-deep snack-bar-container.error {
+    background: #F54B5E;
+    color: white;
+    margin: 0px;
+    width: 150vh;
+    max-width: none;
+}

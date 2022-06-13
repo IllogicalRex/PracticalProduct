@@ -1,0 +1,1 @@
+EXEC sp_put_Characteristic @Id, @CharacteristicName, @Description;

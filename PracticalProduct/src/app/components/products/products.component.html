@@ -1,0 +1,23 @@
+<app-tool-bar title="Gestión de productos"></app-tool-bar>
+<ng-template #snackBarTemplate>
+  <app-alert [msg]="message"></app-alert>
+</ng-template>
+<div class="container container-conf">
+    <div class="row d-flex justify-content-center">
+      <div class="col" style="margin-top: 2%;" >
+        <div class="mat-elevation-z8">
+          <app-table 
+            [tableData]="dataSource"
+            [tableColumns]="displayedColumns"
+            [isFilterable]="true"
+            [isPageable]="true"
+            [isSortable]="true"
+            [paginationSizes]="[5,10,20,40]"
+            [defaultPageSize]="10"
+            [rowActionIcon]="'remove_shopping_cart'"
+            (rowAction)="action($event)">
+          </app-table>
+        </div>
+      </div>
+    </div>
+  </div>

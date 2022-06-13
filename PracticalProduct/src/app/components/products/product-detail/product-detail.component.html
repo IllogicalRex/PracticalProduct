@@ -1,0 +1,148 @@
+
+<app-tool-bar [title]="title"></app-tool-bar>
+<ng-template #snackBarTemplate>
+    <app-alert [msg]="message"></app-alert>
+</ng-template>
+<div class="container container-conf" >
+    <form  [formGroup]="formProduct" (ngSubmit)="submit()">
+        <div class="row" >
+            <div class="col my-3">
+                <div class="row">
+                    <div class="col">
+                        <div class="title-font-size">
+                            Datos del producto
+                        </div>
+                        <br>
+                        <mat-card class="mat-elevation-z6" style="border: 1px solid gainsboro">
+                            <!-- <div style="font-weight: 400; color: gray;"> -->
+                            <br>
+                            <div class="row">
+                                <div class="col">
+                                    <mat-form-field class="field-properties" appearance="outline">
+                                        <mat-label>Id del producto</mat-label>
+                                        <input matInput placeholder="Id producto" value="" formControlName="id" required>
+                                        <mat-error *ngIf="formProduct.get('id') && formProduct.get('id')!.invalid">{{getErrorMessageEmptyFieldProduct('id')}}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col">
+                                    <mat-form-field class="field-properties" appearance="outline">
+                                        <mat-label>Código</mat-label>
+                                        <input matInput placeholder="" value="" formControlName="codeBar" required>
+                                        <mat-error *ngIf="formProduct.get('employeeNumber') && formProduct.get('employeeNumber')!.invalid">{{getErrorMessageEmptyFieldProduct('codeBar')}}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                                
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <mat-form-field class="field-properties" appearance="outline">
+                                        <mat-label>Nombre del producto</mat-label>
+                                        <input matInput placeholder="Nombre" value="" formControlName="name" required>
+                                        <mat-error *ngIf="formProduct.get('firstName') && formProduct.get('firstName')!.invalid">{{getErrorMessageEmptyFieldProduct('name')}}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col">
+                                    <mat-form-field class="field-properties" appearance="outline">
+                                        <mat-label>Categoría</mat-label>
+                                        <input type="text"
+                                        placeholder="Seleccione la categoría del producto"
+                                        aria-label="Number"
+                                        matInput
+                                        required
+                                        autocomplete="off"
+                                        formControlName="category"
+                                        [matAutocomplete]="CategoryAuto">
+                                        <mat-autocomplete autoActiveFirstOption #CategoryAuto="matAutocomplete" showPanel="true">
+                                        <mat-option  *ngFor="let option of categoryFilteredOptions | async" (click)="onChangeCategory(option)" [value]="categoryName">
+                                            {{option.Name}}
+                                        </mat-option>
+                                        </mat-autocomplete>
+                                        <mat-error *ngIf="formProduct.get('category') && formProduct.get('category')!.invalid">{{getErrorMessageEmptyFieldProduct('category')}}</mat-error>
+                                    </mat-form-field>
+
+                                    <!-- <mat-form-field class="field-properties" appearance="outline">
+                                        <mat-label>Categoría</mat-label>
+                                        <input matInput placeholder="Seleccione un categoría"  value="" formControlName="category" required>
+                                        <mat-error *ngIf="formProduct.get('lastName') && formProduct.get('lastName')!.invalid">{{getErrorMessageEmptyFieldProduct('category')}}</mat-error>
+                                    </mat-form-field> -->
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <mat-form-field class="field-properties" appearance="outline">
+                                        <mat-label>Marca</mat-label>
+                                        <input matInput placeholder="Marca" value="" formControlName="brand" required>
+                                        <mat-error *ngIf="formProduct.get('brand') && formProduct.get('brand')!.invalid">{{getErrorMessageEmptyFieldProduct('brand')}}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col">
+                                    <mat-form-field *ngIf="this.formProduct.controls['creationDate'].value !== undefined && this.formProduct.controls['creationDate'].value !== null" class="field-properties" appearance="outline">
+                                        <mat-label>Fecha de creación</mat-label>
+                                        <input matInput placeholder="Fecha" value="" formControlName="creationDate" required >
+                                        <mat-error *ngIf="formProduct.get('creationDate') && formProduct.get('creationDate')!.invalid">{{getErrorMessageEmptyFieldProduct('creationDate')}}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <mat-form-field *ngIf="this.formProduct.controls['updateDate'].value !== undefined && this.formProduct.controls['updateDate'].value !== null" class="field-properties" appearance="outline">
+                                        <mat-label>Fecha de actualización</mat-label>
+                                        <input matInput placeholder="Fecha" value="" formControlName="updateDate">
+                                        <mat-error *ngIf="formProduct.get('updateDate') && formProduct.get('updateDate')!.invalid">{{getErrorMessageEmptyFieldProduct('updateDate')}}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col">
+                                    
+                                </div>
+                            </div>
+                            
+                            
+                        </mat-card>
+                            
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 2%;">
+                    <div class="col">
+                        <div class="title-font-size">
+                            Características del producto
+                        </div>
+                        <br>
+                        <div class="mat-elevation-z8">
+                            <br>
+                            <app-table #Table
+                              [tableData]="dataSource"
+                              [tableColumns]="displayedColumns"
+                              [isFilterable]="true"
+                              [isPageable]="true"
+                              [isSortable]="true"
+                              [paginationSizes]="[5,10,20,40]"
+                              [defaultPageSize]="10"
+                              [rowActionIcon]="'remove_shopping_cart'"
+                              (rowAction)="action($event)">
+                            </app-table>
+                          </div>
+                            
+                    </div>
+                </div>                
+            </div>
+        </div>
+        <p *ngIf="error" class="error">
+            {{ error }}
+        </p>
+        <footer class="footer-login ">
+            <div class="d-flex justify-content-end" style="margin-top: 1%;">
+                <button type="submit" mat-raised-button
+                style="background-color: #57A3FF; color: white; margin-bottom: 1%;"
+                        matTooltip="Guardar"
+                        matTooltipClass="tooltip-red" 
+                        class="acept-button"
+                        >
+                  <mat-icon>{{icon}}</mat-icon> {{buttonText}}
+                </button>
+            </div>
+        </footer>
+</form>
+    
+    <!-- <button (click)="submit()">submit</button> -->
+
+</div>

@@ -1,0 +1,1 @@
+EXEC sp_post_product @CodeBar, @Name, @Category, @Brand;

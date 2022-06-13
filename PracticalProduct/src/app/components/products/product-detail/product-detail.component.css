@@ -1,0 +1,17 @@
+.container {
+    width: 100%;
+}
+
+.container-conf {
+    max-width: 100%;
+}
+
+.field-properties {
+    width: 100%;
+}
+
+.title-font-size {
+    font-weight: bold; 
+    color: gray; 
+    font-size: 18px;
+}

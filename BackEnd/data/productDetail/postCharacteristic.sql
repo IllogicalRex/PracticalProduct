@@ -1,0 +1,1 @@
+EXEC sp_post_Characteristic @ProductId, @CharacteristicName, @Description;

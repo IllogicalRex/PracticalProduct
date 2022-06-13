@@ -1,0 +1,54 @@
+<div>
+    <form  [formGroup]="formCharacteristic" (ngSubmit)="acept()">
+        <div mat-dialog-title>
+            <div class="row">
+                <div class="col">
+                    <h1 >{{title}}</h1>
+                </div>
+            </div>
+        </div>
+        <div mat-dialog-content>
+            <div class="container contain">
+                <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
+                    <div class="col">
+                        <div class="row">
+                            <div class="col">
+                                <mat-form-field class="field-properties" appearance="outline">
+                                    <mat-label>Id</mat-label>
+                                    <input matInput placeholder="Id" value="" formControlName="id" required>
+                                    <mat-error *ngIf="formCharacteristic.get('id') && formCharacteristic.get('id')!.invalid">{{getErrorMessageEmptyFieldCharacteristic('id')}}</mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col">
+                                <mat-form-field class="field-properties" appearance="outline">
+                                    <mat-label>Característica</mat-label>
+                                    <input matInput placeholder="Característica" value="" formControlName="characteristicName" required>
+                                    <mat-error *ngIf="formCharacteristic.get('characteristicName') && formCharacteristic.get('characteristicName')!.invalid">{{getErrorMessageEmptyFieldCharacteristic('characteristicName')}}</mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <mat-form-field class="field-properties" appearance="outline">
+                                    <mat-label>Descripción</mat-label>
+                                    <input matInput placeholder="Descripción" value="" formControlName="description" required>
+                                    <mat-error *ngIf="formCharacteristic.get('description') && formCharacteristic.get('description')!.invalid">{{getErrorMessageEmptyFieldCharacteristic('description')}}</mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col">
+                                <mat-form-field class="field-properties" appearance="outline">
+                                    <mat-label>Fecha de creación</mat-label>
+                                    <input matInput placeholder="Fecha de creación" value="" formControlName="creationDate" required>
+                                    <mat-error *ngIf="formCharacteristic.get('creationDate') && formCharacteristic.get('creationDate')!.invalid">{{getErrorMessageEmptyFieldCharacteristic('creationDate')}}</mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div mat-dialog-actions align="end" style="margin-top: 1%;">
+            <button mat-button type="submit" style="background-color: #4A7D9E; color: white;">Aceptar</button>
+        </div>
+    </form>
+</div>
