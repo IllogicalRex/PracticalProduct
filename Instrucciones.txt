@@ -1,0 +1,23 @@
+Instrucciones:
+
+* Tecnologías de desarrollo:
+	- Angular CLI 12.2.5
+	- NodeJs v14.17.6
+	- SQL Server 2017
+	- Express
+
+* Requisitos:
+	- Restaurar base de datos -> \SLQ Server\BackUp\PracticalProduct.bak
+
+* Configuración:	
+	- Configurar conexión a base de datos:
+		En la carpeta BackEnd/.env, configurar los campos SQL_USER, SQL_PASSWORD y SQL_SERVER.
+
+	- Correr el proyecto:
+		En la carpta BackEnd, abrir una terminal e ingresar los siguientes comandos:
+			1. npm install
+			2. npm start
+
+		En la carpeta PracticalProduct, abrir una terminal e ingresar los siguientes comandos:
+			1. npm install
+			2. ng serve -o
