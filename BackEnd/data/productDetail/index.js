@@ -49,17 +49,17 @@ const addDetails = async (characteristicData) => {
     try {
         let pool = await sql.connect(config.sql);
         const sqlQueries = await utils.loadSqlQueries('productDetail');
-        const insertCharacteristic = null;
+        //  const insertCharacteristic = null;
         characteristicData.forEach(async elem => {
-            insertCharacteristic = await pool.request()
+            const insertCharacteristic = await pool.request()
                             .input('ProductId', sql.Int, elem.ProductId)
                             .input('CharacteristicName', sql.VarChar(50), elem.CharacteristicName)
                             .input('Description', sql.VarChar(200), elem.Description)
                             .query(sqlQueries.postCharacteristic); 
             
         });
-        // return insertCharacteristic.recordset[0];
-        return characteristicData;
+        return true;
+        //return characteristicData;
     } catch (error) {
         return error.message;
     }

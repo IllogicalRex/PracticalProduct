@@ -27,7 +27,7 @@
                                 <div class="col">
                                     <mat-form-field class="field-properties" appearance="outline">
                                         <mat-label>Código</mat-label>
-                                        <input matInput placeholder="" value="" formControlName="codeBar" required>
+                                        <input matInput placeholder="Código de 8 caracteres" value="" formControlName="codeBar" required>
                                         <mat-error *ngIf="formProduct.get('employeeNumber') && formProduct.get('employeeNumber')!.invalid">{{getErrorMessageEmptyFieldProduct('codeBar')}}</mat-error>
                                     </mat-form-field>
                                 </div>
